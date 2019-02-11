@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Icon from '../../components/icon/icon';
-import Pad from '../../components/pad/pad';
+import Icon from '../icon/icon';
+import Pad from '../pad/pad';
 import { storage } from '../../utils/storage-utils';
 import { format, fromMs } from '../../utils/time-utils';
 import { MODES } from './device-modes';
