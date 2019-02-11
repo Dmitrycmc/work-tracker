@@ -1,49 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
-import Icon from './components/icon/icon';
-
-const Sign = () => (
-  <div className="sign-wrapper">
-    <span className="sign-title">Designed & coded by</span>
-    <a href="https://codepen.io/Dimancmc/full/vaVJBj" target="_blank" className="sign-link">
-        Lytov Dmitry
-    </a>
-  </div>
-);
-
-const storage = {
-  getMode: () => +localStorage.getItem('mode') || MODES.stop,
-  setMode: value => localStorage.setItem('mode', value),
-  getCurrent: () => +localStorage.getItem('current') || 0,
-  setCurrent: value => localStorage.setItem('current', value),
-  getTotal: () => +localStorage.getItem('total') || 0,
-  setTotal: value => localStorage.setItem('total', value),
-  getStartTime: () => +localStorage.getItem('start-time') || 0,
-  setStartTime: value => localStorage.setItem('start-time', value)
-}
-
-const MODES = {
-  stop: 0,
-  play: 1,
-  pause: 2
-};
+import Icon from '../../components/icon/icon';
+import Pad from '../../components/pad/pad';
+import { storage } from '../../utils/storage-utils';
+import { format, fromMs } from '../../utils/time-utils';
+import { MODES } from './device-modes';
+import './device.css';
 
 const SPACE = 32;
-
-const format = val => {
-  if (val < 10) return '0' + val;
-  return val;
-}
-
-const fromMs = milliseconds => {
-  const fullSeconds = Math.floor(milliseconds / 1000);
-  const seconds = fullSeconds % 60;
-  const fullMinutes = Math.floor(fullSeconds / 60); 
-  const minutes = fullMinutes % 60;
-  const hours = Math.floor(fullMinutes / 60);
-  
-  return {hours, minutes, seconds};
-}
 
 const Time = ({value, className, delimiter, hideSeconds}) => {
   const { hours, minutes, seconds } = fromMs(value);
@@ -72,19 +35,6 @@ const Display = ({current, total, showDelimiter, mode}) => (
     <Time delimiter={showDelimiter} className="display-current" value={current} />
   </div>
 );
-
-class Pad extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { onClick, children, className } = this.props;
-    return (
-      <div className={`pad ${className || ''}`} onClick={onClick}>{children}</div>
-    );
-  };
-}
 
 class Device extends React.Component {
   constructor(props) {
@@ -207,11 +157,4 @@ class Device extends React.Component {
   }
 }
 
-const App = () => (
-  <div className="app">
-    <Device />
-    <Sign />
-  </div>
-);
-
-export default App;
+export default Device;

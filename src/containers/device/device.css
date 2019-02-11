@@ -1,0 +1,55 @@
+.device {
+  border-radius: 5px;
+  border: 1px #333 solid;
+  background: linear-gradient(140deg, #262626 0%, #333333 50%, #0d0d0d 53%, black 65%);
+  user-select: none;
+  padding: 15px;
+}
+
+.display-wrapper {
+  background: #ddd;
+  border-radius: 5px;
+  height: auto;
+  padding: 7px 12px;
+  color: #111;
+  font-family: Digital;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor: default;
+}
+
+.display-total, .display-current {
+  position: relative;
+  z-index: 1;
+}
+
+.display-total::before, .display-current::before {
+  position: absolute;
+  color: #bbb;
+  z-index: -1;
+}
+
+.display-total {
+  font-size: 27px;
+}
+
+.display-total::before {
+  content: '88:88';
+}
+
+.display-current {
+  font-size: 40px;
+}
+
+.display-current::before {
+  content: '88:88:88';
+}
+
+.indicators-total-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
