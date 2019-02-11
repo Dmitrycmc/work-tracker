@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+export const Food = () => (
+  <div>
+    Favorite Food: <FontAwesomeIcon icon="igloo" />
+  </div>
+)
+
 const Sign = () => (
   <div className="sign-wrapper">
     <span className="sign-title">Designed & coded by</span>
     <a href="https://codepen.io/Dimancmc/full/vaVJBj" target="_blank" className="sign-link">
         Lytov Dmitry
-    </a>
+    </a><Food />
   </div>
 );
 
