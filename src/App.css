@@ -137,12 +137,3 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-
-.icon {
-  margin: 0 7px;
-  font-size: 15px;
-}
-
-.indicator-inactive {
-  color: #bbb;
-}

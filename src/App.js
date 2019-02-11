@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-export const Food = () => (
-  <div>
-    Favorite Food: <FontAwesomeIcon icon="igloo" />
-  </div>
-)
+import Icon from './components/icon/icon';
 
 const Sign = () => (
   <div className="sign-wrapper">
     <span className="sign-title">Designed & coded by</span>
     <a href="https://codepen.io/Dimancmc/full/vaVJBj" target="_blank" className="sign-link">
         Lytov Dmitry
-    </a><Food />
+    </a>
   </div>
 );
 
@@ -41,10 +34,6 @@ const format = val => {
   if (val < 10) return '0' + val;
   return val;
 }
-
-const Icon = ({type, inactive}) => (
-  <i className={`fas fa-${type} icon ${inactive ? 'indicator-inactive' : ''}`} />
-);
 
 const fromMs = milliseconds => {
   const fullSeconds = Math.floor(milliseconds / 1000);
