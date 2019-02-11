@@ -1,33 +1,148 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: "Digital";
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/fonts/digital-7/digital-7 (mono).ttf');
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  background-image: url(https://pp.userapi.com/c845523/v845523713/cd5dc/01aQ6hG3Tlo.jpg);
+  background-size: 1024px;
+}
+@media (min-width: 1024px), (min-height: 1024px) {
+  body {
+    background-size: 100vmax;
+  }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 18px;
+  margin: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.sign-link {
+  color: #000;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sign-link:hover {
+  color: #11a;
+  text-decoration: underline;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+}
+
+.device {
+  border-radius: 5px;
+  border: 1px #333 solid;
+  background: linear-gradient(140deg, #262626 0%, #333333 50%, #0d0d0d 53%, black 65%);
+  user-select: none;
+  padding: 15px;
+}
+
+.pad {
+  padding: 10px;
+  font-size: 23px;
+  color: #bbb;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.pad-start-pause {
+  border-radius: 5px;
+  border: 1px #333 solid;
+  background: linear-gradient(140deg, #3d983d 0%, #44aa44 50%, #2e732e 53%, #204f20 65%);
+  display: flex;
+  flex-direction: column;
+}
+
+.pad-start-pause:active {
+  border-radius: 5px;
+  border: 1px #333 solid;
+  background: linear-gradient(140deg, #2d862d 0%, #339933 50%, #206020 53%, #133913 65%);
+}
+
+.pad-reset {
+  border-radius: 5px;
+  border: 1px #333 solid;
+  background: linear-gradient(140deg, #951e1e 0%, #aa2222 50%, #6a1515 53%, #400d0d 65%);
+}
+
+.pad-reset:active {
+  border-radius: 5px;
+  border: 1px #333 solid;
+  background: linear-gradient(140deg, #820e0e 0%, #991111 50%, #540909 53%, #260404 65%);
+}
+
+.display-wrapper {
+  background: #ddd;
+  border-radius: 5px;
+  height: auto;
+  padding: 7px 12px;
+  color: #111;
+  font-family: Digital;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor: default;
+}
+
+.display-total, .display-current {
+  position: relative;
+  z-index: 1;
+}
+
+.display-total::before, .display-current::before {
+  position: absolute;
+  color: #bbb;
+  z-index: -1;
+}
+
+.display-total {
+  font-size: 27px;
+}
+
+.display-total::before {
+  content: '88:88';
+}
+
+.display-current {
+  font-size: 40px;
+}
+
+.display-current::before {
+  content: '88:88:88';
+}
+
+.indicators-total-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  margin: 0 7px;
+  font-size: 15px;
+}
+
+.indicator-inactive {
+  color: #bbb;
 }
