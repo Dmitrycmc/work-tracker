@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../device/device";
+import Icon from "../icon/icon";
 import {MODES} from "../device/device-modes";
 import {Time} from "../time/time";
 import './display.css';
