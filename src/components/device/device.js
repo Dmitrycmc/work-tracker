@@ -1,40 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Icon from '../icon/icon';
 import Pad from '../pad/pad';
-import { storage } from '../../utils/storage-utils';
-import { format, fromMs } from '../../utils/time-utils';
-import { MODES } from './device-modes';
+import {storage} from '../../utils/storage-utils';
+import {MODES} from './device-modes';
 import './device.css';
+import {Display} from "../display/display";
 
 const SPACE = 32;
-
-const Time = ({value, className, delimiter, hideSeconds}) => {
-  const { hours, minutes, seconds } = fromMs(value);
-
-  return (
-    <span className={className}>
-      {format(hours)}
-      {delimiter ? ':' : ' '}
-      {format(minutes)}
-      {!hideSeconds && <span>{delimiter ? ':' : ' '}
-      {format(seconds)}</span>}
-    </span>
-  );
-}
-
-const Display = ({current, total, showDelimiter, mode}) => (
-  <div className="display-wrapper">
-    <span className="indicators-total-wrapper">
-      <span className="indicators-wrapper">
-        <Icon type="play" inactive={mode != MODES.play} />
-        <Icon type="pause" inactive={mode != MODES.pause} />
-        <Icon type="stop" inactive={mode != MODES.stop} />
-      </span>
-      <Time delimiter hideSeconds className="display-total" value={total} />
-    </span>
-    <Time delimiter={showDelimiter} className="display-current" value={current} />
-  </div>
-);
 
 class Device extends React.Component {
   constructor(props) {
