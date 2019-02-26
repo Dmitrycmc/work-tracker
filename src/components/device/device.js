@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Icon from '../icon/icon';
 import Pad from '../pad/pad';
 import {storage} from '../../utils/storage-utils';
@@ -6,33 +6,17 @@ import {MODES} from './device-modes';
 import './device.css';
 import {Display} from "../display/display";
 
-const SPACE = 32;
+const SPACE_CODE = 32;
 
-class Device extends React.Component {
+class Device extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showDelimiter: true,
-      intervalId: null    
+      intervalId: null
     };
   }
-  /*
-  handleKeyDown = e => {
-    if (e.keyCode != SPACE || this.state.pressed) return;
-    this.props.onClick && this.props.onClick();
-    this.setState({pressed: true});
-  };
-  
-  handleKeyUp = e => {
-    if (e.keyCode != SPACE) return;
-    this.setState({pressed: false});
-  };
-  
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
-    document.addEventListener('keyup', this.handleKeyUp);
-  };
-  */
+
   componentDidMount() {
     const mode = storage.getMode();
     let diffTime = 0;
@@ -117,7 +101,7 @@ class Device extends React.Component {
           current={time} 
           total={total} 
           />
-        <Pad className='pad-start-pause' onClick={this.onStartPause}>
+        <Pad className='pad-start-pause' onClick={this.onStartPause} keyCode={SPACE_CODE}>
           <span><Icon type="play" />START</span>
           <span><Icon type="pause" />PAUSE</span>
         </Pad>
