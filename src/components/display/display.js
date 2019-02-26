@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../device/device";
 import {MODES} from "../device/device-modes";
 import {Time} from "../time/time";
+import './display.css';
 
 export const Display = ({current, total, showDelimiter, mode}) => (
     <div className="display-wrapper">
