@@ -3,8 +3,9 @@ import Icon from '../icon/icon';
 import Pad from '../pad/pad';
 import { storage } from '../../utils/storage-utils';
 import { MODES } from './device-modes';
-import './device.css';
 import { Display } from '../display/display';
+import { SECOND } from '../../utils/time-utils';
+import './device.css';
 
 const SPACE_CODE = 32;
 
@@ -25,7 +26,7 @@ class Device extends Component {
             const startTime = storage.getStartTime();
             const nowTime = Date.now();
             diffTime = nowTime - startTime;
-            intervalId = setInterval(this.tick, 500);
+            intervalId = setInterval(this.tick, SECOND / 2);
         }
 
         this.setState({

@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from '../icon/icon';
 import { MODES } from '../device/device-modes';
 import { Time } from './time';
+import { MINUTE } from '../../utils/time-utils';
 import './display.css';
 
 export const Display = ({ current, total, showDelimiter, mode }) => {
@@ -16,7 +17,7 @@ export const Display = ({ current, total, showDelimiter, mode }) => {
                     <Icon type="stop" inactive={mode != MODES.stop} />
                 </span>
                 <span className={!negative ? "inactive" : ""}>-</span>
-                <Time delimiter hideSeconds className="display-total" value={negative ? -total : total} />
+                <Time delimiter hideSeconds className="display-total" value={negative ? MINUTE - total : total} />
             </span>
             <Time delimiter={showDelimiter} className="display-current" value={current} />
         </div>
