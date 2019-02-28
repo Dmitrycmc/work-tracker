@@ -22,7 +22,7 @@ class Device extends Component {
         const mode = storage.getMode();
         let diffTime = 0;
         let intervalId = null;
-        if (mode == MODES.play) {
+        if (mode === MODES.play) {
             const startTime = storage.getStartTime();
             const nowTime = Date.now();
             diffTime = nowTime - startTime;
@@ -31,7 +31,7 @@ class Device extends Component {
 
         this.setState({
             mode: storage.getMode(),
-            time: storage.getCurrent() + diffTime,
+            current: storage.getCurrent() + diffTime,
             total: storage.getTotal() + diffTime,
             intervalId
         });
@@ -44,10 +44,10 @@ class Device extends Component {
         diffTime = nowTime - startTime;
 
         this.setState(prevState => {
-            const { showDelimiter, time, total } = prevState;
+            const { showDelimiter } = prevState;
             return {
                 showDelimiter: !showDelimiter,
-                time: storage.getCurrent() + diffTime,
+                current: storage.getCurrent() + diffTime,
                 total: storage.getTotal() + diffTime
             };
         });
@@ -55,12 +55,12 @@ class Device extends Component {
 
     onStartPause = () => {
         this.setState(prevState => {
-            const { mode, intervalId, time, total } = prevState;
-            const isRun = mode == MODES.play;
+            const { mode, intervalId, current, total } = prevState;
+            const isRun = mode === MODES.play;
             if (isRun) {
                 clearInterval(intervalId);
                 storage.setMode(MODES.pause);
-                storage.setCurrent(time);
+                storage.setCurrent(current);
                 storage.setTotal(total);
                 return {
                     mode: MODES.pause,
@@ -80,23 +80,23 @@ class Device extends Component {
     };
 
     onReset = () => {
-        const { intervalId, total, time } = this.state;
+        const { intervalId, total } = this.state;
         clearInterval(intervalId);
         storage.setTotal(total);
         storage.setCurrent(0);
         storage.setMode(MODES.stop);
         this.setState({
-            time: 0,
+            current: 0,
             mode: MODES.stop,
             intervalId: null
         });
     };
 
     render() {
-        const { showDelimiter, time, total, mode } = this.state;
+        const { showDelimiter, current, total, mode } = this.state;
         return (
             <div className="device">
-                <Display mode={mode} showDelimiter={showDelimiter} current={time} total={total} />
+                <Display mode={mode} showDelimiter={showDelimiter} current={current} total={total} />
                 <Pad className="pad-start-pause" onClick={this.onStartPause} keyCode={SPACE_CODE}>
                     <span>
                         <Icon type="play" />

@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from '../icon/icon';
-import { MODES } from '../device/device-modes';
+import { MODES } from '../../containers/device/device-modes';
 import { Time } from './time';
 import { MINUTE } from '../../utils/time-utils';
 import './display.css';
@@ -12,9 +12,9 @@ export const Display = ({ current, total, showDelimiter, mode }) => {
         <div className="display-wrapper">
             <span className="indicators-total-wrapper">
                 <span className="indicators-wrapper">
-                    <Icon type="play" inactive={mode != MODES.play} />
-                    <Icon type="pause" inactive={mode != MODES.pause} />
-                    <Icon type="stop" inactive={mode != MODES.stop} />
+                    <Icon type="play" inactive={mode !== MODES.play} />
+                    <Icon type="pause" inactive={mode !== MODES.pause} />
+                    <Icon type="stop" inactive={mode !== MODES.stop} />
                 </span>
                 <span className={!negative ? "inactive" : ""}>-</span>
                 <Time delimiter hideSeconds className="display-total" value={negative ? MINUTE - total : total} />

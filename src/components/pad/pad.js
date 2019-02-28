@@ -21,13 +21,13 @@ class PadWithKey extends Component {
         const { keyCode } = this.props;
         const { pressed } = this.state;
 
-        if (e.keyCode != keyCode || pressed) return;
+        if (e.keyCode !== keyCode || pressed) return;
         this.setState({ pressed: true });
     };
 
     handleKeyUp = e => {
         const { keyCode, onClick } = this.props;
-        if (e.keyCode != keyCode) return;
+        if (e.keyCode !== keyCode) return;
         this.setState({ pressed: false });
         onClick && onClick();
     };

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './app.css';
-import Device from '../../components/device/device';
+import Device from '../device/device';
 import Sign from '../../components/sign/sign';
 
 const App = () => (

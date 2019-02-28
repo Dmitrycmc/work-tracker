@@ -4,7 +4,7 @@ import './sign.css';
 const Sign = () => (
     <div className="sign-wrapper">
         <span className="sign-title">Designed & coded by</span>
-        <a href="https://codepen.io/Dimancmc/full/vaVJBj" target="_blank" className="sign-link">
+        <a href="https://codepen.io/Dimancmc/full/vaVJBj" target="_blank" rel="noopener noreferrer" className="sign-link">
             Lytov Dmitry
         </a>
     </div>
