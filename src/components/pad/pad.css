@@ -15,11 +15,7 @@
   flex-direction: column;
 }
 
-/* Duplicates!!
-todo: merge this riles
-difficultly: pseudo class
-suppose: styled-components
-*/
+/* Duplicates!! */
 .pad-start-pause:active {
   border-radius: 5px;
   border: 1px #333 solid;
