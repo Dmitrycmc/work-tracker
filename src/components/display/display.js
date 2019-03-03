@@ -5,7 +5,7 @@ import { Time } from './time';
 import { MINUTE } from '../../utils/time-utils';
 import './display.css';
 
-export const Display = ({ current, total, showDelimiter, mode }) => {
+const Display = ({ current, total, showDelimiter, mode }) => {
     const negative = total < 0;
 
     return (
@@ -23,3 +23,5 @@ export const Display = ({ current, total, showDelimiter, mode }) => {
         </div>
     );
 }
+
+export default Display;

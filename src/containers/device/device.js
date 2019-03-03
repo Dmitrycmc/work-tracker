@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Icon from '../icon/icon';
-import Pad from '../pad/pad';
+import Icon from '../../components/icon/icon';
+import Pad from '../../components/pad/pad';
 import { storage } from '../../utils/storage-utils';
 import { MODES } from './device-modes';
-import { Display } from '../display/display';
+import Display from '../../components/display/display';
 import { SECOND } from '../../utils/time-utils';
 import './device.css';
 
