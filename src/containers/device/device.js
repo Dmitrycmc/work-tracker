@@ -4,10 +4,11 @@ import Pad from '../../components/pad/pad';
 import { storage } from '../../utils/storage-utils';
 import { MODES } from './device-modes';
 import Display from '../../components/display/display';
-import { SECOND } from '../../utils/time-utils';
+import { getFullWeeksSince, getLastMonday, HOUR, SECOND } from '../../utils/time-utils';
 import './device.css';
 
 const SPACE_CODE = 32;
+const HOURS_PER_WEEK = 30;
 
 class Device extends Component {
     constructor(props) {
@@ -28,6 +29,19 @@ class Device extends Component {
             diffTime = nowTime - startTime;
             intervalId = setInterval(this.tick, SECOND / 2);
         }
+
+
+        const lastSubtraction = storage.getLastSubtraction();
+        const lastMonday = getLastMonday();
+
+        if (lastSubtraction) {
+            const weeks = getFullWeeksSince(lastSubtraction);
+            if (weeks) {
+                storage.setTotal(storage.getTotal() - weeks * HOURS_PER_WEEK * HOUR);
+            }
+        }
+        storage.setLastSubtraction(lastMonday);
+
 
         this.setState({
             mode: storage.getMode(),
