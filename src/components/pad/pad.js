@@ -77,6 +77,7 @@ class Pad extends Component {
                     url={soundfile}
                     playStatus={status}
                     loop={false}
+                    autoLoad
                 />
                 <div
                     onMouseDown={this.handleMouseDown}
