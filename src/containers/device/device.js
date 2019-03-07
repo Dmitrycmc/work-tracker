@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Icon from '../../components/icon/icon';
 import Pad from '../../components/pad/pad';
-import { storage } from '../../utils/storage-utils';
+import * as storage from '../../utils/storage-utils';
 import { MODES } from './device-modes';
 import Display from '../../components/display/display';
 import { getFullWeeksSince, getLastMonday, HOUR, SECOND } from '../../utils/time-utils';

@@ -20,7 +20,6 @@ export const fromMs = milliseconds => {
 };
 
 /***
- *
  * @param {Date} date
  * @returns {number[0-6]}
  * 0 - Monday
@@ -43,3 +42,10 @@ export const getFullWeeksSince = date => {
     const difference = now - date;
     return Math.floor(difference / WEEK);
 }
+
+/**
+ * @param {number | string} ms
+ * @param {number | string} minutes
+ * @return {number} (ms + minutes) im ms
+ */
+export const addMinutesToMs = (ms, minutes) => + ms + minutes * MINUTE;
