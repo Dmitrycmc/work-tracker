@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../icon/icon';
 import { MODES } from '../../containers/device/device-modes';
-import { Time } from './time';
+import Time from './time';
 import { MINUTE } from '../../utils/time-utils';
 import './display.css';
 
