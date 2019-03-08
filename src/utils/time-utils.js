@@ -49,3 +49,14 @@ export const getFullWeeksSince = date => {
  * @return {number} (ms + minutes) im ms
  */
 export const addMinutesToMs = (ms, minutes) => + ms + minutes * MINUTE;
+
+export const timeToString = (negative, hours, minutes) => {
+    const minusStr = negative ? '-' : '';
+    const minutesStr = minutes ? `${minutes}m` : '';
+    const hoursStr = hours ? `${hours}h` : '';
+
+    const hoursMinutesStr = hoursStr + minutesStr;
+
+    return minusStr + hoursMinutesStr || '0m';
+
+}

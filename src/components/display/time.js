@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {format, fromMs, MINUTE} from '../../utils/time-utils';
+import {format, fromMs, MINUTE, timeToString} from '../../utils/time-utils';
 import { copyTextToClipboard } from "../../utils/clipboard-utils";
 import "./display.css";
 import TwoDigits from "./two-digits";
@@ -10,22 +10,27 @@ const cursorPointer = {cursor: 'pointer'};
 class Time extends Component {
 
     onClick = () => {
-        const { value } = this.props;
-        const { hours, minutes } = fromMs(value);
-        const text = `${hours}h${minutes}m`;
+        const negative = this.isNegative();
+        const module = this.getModule();
+        const { hours, minutes } = fromMs(module);
+        const text = timeToString(negative, hours, minutes);
         copyTextToClipboard(text);
+    }
+
+    isNegative = () => this.props.value < 0;
+
+    getModule = () => {
+        const { value } = this.props;
+        return this.isNegative() ? MINUTE - value : value;
     }
 
     render() {
         const { className, delimiter, showSeconds, onlyPositive } = this.props;
-        let { value } = this.props;
-        const negative = value < 0;
 
-        if (negative) {
-            value = MINUTE - value;
-        }
+        const negative = this.isNegative();
+        const module = this.getModule();
 
-        const { hours, minutes, seconds } = fromMs(value);
+        const { hours, minutes, seconds } = fromMs(module);
 
         return (
             <span style={cursorPointer} className={`time ${className || ''}`} onClick={this.onClick}>
