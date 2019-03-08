@@ -1,7 +1,7 @@
 import React from "react";
 
-const Symbol = ({show, value}) => (<span className={show ? '' : 'inactive'}>{value}</span>);
+export const Symbol = ({show, children}) => (<span className={show ? '' : 'inactive'}>{children}</span>);
 
-export const Delimiter = ({show}) => <Symbol show={show} value=':' />;
+export const Delimiter = ({show}) => <Symbol show={show}>:</Symbol>;
 
-export const Minus = ({show}) => <Symbol show={show} value='-' />;
+export const Minus = ({show}) => <Symbol show={show}>-</Symbol>;

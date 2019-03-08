@@ -2,10 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './icon.css';
 
-const Icon = ({ type, inactive }) => (
-    <span className={`icon ${inactive ? ' indicator-inactive' : ''}`}>
+const Icon = ({ type }) => (
+    <div className='icon'>
         <FontAwesomeIcon icon={type} />
-    </span>
+    </div>
 );
 
 export default Icon;

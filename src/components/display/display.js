@@ -3,6 +3,7 @@ import Icon from '../icon/icon';
 import { MODES } from '../../containers/device/device-modes';
 import Time from './time';
 import './display.css';
+import {Symbol} from "./symbol";
 
 const Display = ({ current, total, showDelimiter, mode }) => {
 
@@ -10,9 +11,15 @@ const Display = ({ current, total, showDelimiter, mode }) => {
         <div className="display-wrapper">
             <span className="indicators-total-wrapper">
                 <span className="indicators-wrapper">
-                    <Icon type="play" inactive={mode !== MODES.play} />
-                    <Icon type="pause" inactive={mode !== MODES.pause} />
-                    <Icon type="stop" inactive={mode !== MODES.stop} />
+                    <Symbol show={mode === MODES.play}>
+                        <Icon type="play"/>
+                    </Symbol>
+                    <Symbol show={mode === MODES.pause}>
+                        <Icon type="pause"/>
+                    </Symbol>
+                    <Symbol show={mode === MODES.stop}>
+                        <Icon type="stop"/>
+                    </Symbol>
                 </span>
                 <Time delimiter className="display-total" value={total} />
             </span>

@@ -20,6 +20,10 @@
     font-size: 40px;
 }
 
+.indicators-wrapper {
+    display: flex;
+}
+
 .indicators-total-wrapper {
     font-size: 27px;
     width: 100%;

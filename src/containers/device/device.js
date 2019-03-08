@@ -112,17 +112,17 @@ class Device extends Component {
             <div className="device">
                 <Display mode={mode} showDelimiter={showDelimiter} current={current} total={total} />
                 <Pad className="pad-start-pause" onClick={this.onStartPause} keyCode={SPACE_CODE}>
-                    <span>
+                    <span className='label'>
                         <Icon type="play" />
                         START
                     </span>
-                    <span>
+                    <span className='label'>
                         <Icon type="pause" />
                         PAUSE
                     </span>
                 </Pad>
                 <Pad className="pad-reset" onClick={this.onReset}>
-                    <span>
+                    <span className='label'>
                         <Icon type="stop" />
                         RESET
                     </span>
