@@ -19,17 +19,17 @@ class Time extends Component {
         const { hours, minutes, seconds } = fromMs(value);
 
         return (
-            <span style={cursorPointer} className={className} onClick={this.onClick}>
-            {format(hours)}
+            <span style={cursorPointer} className={`time ${className || ''}`} onClick={this.onClick}>
+                {format(hours)}
                 {delimiter ? ':' : ' '}
                 {format(minutes)}
                 {!hideSeconds && (
                     <span>
-                    {delimiter ? ':' : ' '}
+                        {delimiter ? ':' : ' '}
                         {format(seconds)}
-                </span>
+                    </span>
                 )}
-        </span>
+            </span>
         );
     }
 };

@@ -46,3 +46,19 @@
 .inactive {
     color: #bbb;
 }
+
+.time:hover {
+    animation: flash  0.5s infinite ease-in-out;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
