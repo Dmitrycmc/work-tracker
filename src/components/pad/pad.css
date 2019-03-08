@@ -5,42 +5,28 @@
   text-align: center;
   cursor: pointer;
   margin-top: 15px;
-}
-
-.pad-start-pause {
   border-radius: 5px;
   border: 1px #333 solid;
-  background: linear-gradient(140deg, #3d983d 0%, #44aa44 50%, #2e732e 53%, #204f20 65%);
   display: flex;
   flex-direction: column;
 }
 
-/* Duplicates!!
-todo: merge this riles
-difficultly: pseudo class
-suppose: styled-components
-*/
+.pad-start-pause {
+  background: linear-gradient(140deg, #3d983d 0%, #44aa44 50%, #2e732e 53%, #204f20 65%);
+  }
+
 .pad-start-pause:active {
-  border-radius: 5px;
-  border: 1px #333 solid;
   background: linear-gradient(140deg, #2d862d 0%, #339933 50%, #206020 53%, #133913 65%);
 }
 
-/* Duplicates!! */
 .pad-start-pause.pressed {
-  border-radius: 5px;
-  border: 1px #333 solid;
   background: linear-gradient(140deg, #2d862d 0%, #339933 50%, #206020 53%, #133913 65%);
 }
 
 .pad-reset {
-  border-radius: 5px;
-  border: 1px #333 solid;
   background: linear-gradient(140deg, #951e1e 0%, #aa2222 50%, #6a1515 53%, #400d0d 65%);
 }
 
 .pad-reset:active {
-  border-radius: 5px;
-  border: 1px #333 solid;
   background: linear-gradient(140deg, #820e0e 0%, #991111 50%, #540909 53%, #260404 65%);
 }
