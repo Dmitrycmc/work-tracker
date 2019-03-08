@@ -16,22 +16,8 @@
     z-index: 1;
 }
 
-.display-total::before, .display-current::before {
-    position: absolute;
-    color: #bbb;
-    z-index: -1;
-}
-
-.display-total::before {
-    content: '88:88';
-}
-
 .display-current {
     font-size: 40px;
-}
-
-.display-current::before {
-    content: '88:88:88';
 }
 
 .indicators-total-wrapper {
@@ -61,4 +47,16 @@
     100% {
         opacity: 1;
     }
+}
+
+.digit {
+    position: relative;
+    z-index: 1;
+}
+
+.digit::before {
+    content: '8';
+    color: #bbb;
+    position: absolute;
+    z-index: -1;
 }
