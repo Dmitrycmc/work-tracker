@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {format, fromMs, MINUTE, timeToString} from '../../utils/time-utils';
+import {fromMs, MINUTE, timeToString} from '../../utils/time-utils';
 import { copyTextToClipboard } from "../../utils/clipboard-utils";
 import "./display.css";
 import TwoDigits from "./two-digits";

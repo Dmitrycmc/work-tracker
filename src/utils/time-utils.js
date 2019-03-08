@@ -19,6 +19,8 @@ export const fromMs = milliseconds => {
     return { hours, minutes, seconds };
 };
 
+export const minutesToMs = minutes => minutes * MINUTE;
+
 /***
  * @param {Date} date
  * @returns {number[0-6]}

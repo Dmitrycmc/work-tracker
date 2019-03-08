@@ -20,40 +20,40 @@ class Device extends Component {
     }
 
     componentDidMount() {
-        const mode = storage.getMode();
+        const mode = storage.readMode();
         let diffTime = 0;
         let intervalId = null;
         if (mode === MODES.play) {
-            const startTime = storage.getStartTime();
+            const startTime = storage.readStartTime();
             const nowTime = Date.now();
             diffTime = nowTime - startTime;
             intervalId = setInterval(this.tick, SECOND / 2);
         }
 
 
-        const lastSubtraction = storage.getLastSubtraction();
+        const lastSubtraction = storage.readLastSubtraction();
         const lastMonday = getLastMonday();
 
         if (lastSubtraction) {
             const weeks = getFullWeeksSince(lastSubtraction);
             if (weeks) {
-                storage.setTotal(storage.getTotal() - weeks * HOURS_PER_WEEK * HOUR);
+                storage.writeTotal(storage.readTotal() - weeks * HOURS_PER_WEEK * HOUR);
             }
         }
-        storage.setLastSubtraction(lastMonday);
+        storage.writeLastSubtraction(lastMonday);
 
 
         this.setState({
-            mode: storage.getMode(),
-            current: storage.getCurrent() + diffTime,
-            total: storage.getTotal() + diffTime,
+            mode: storage.readMode(),
+            current: storage.readCurrent() + diffTime,
+            total: storage.readTotal() + diffTime,
             intervalId
         });
     }
 
     tick = () => {
         let diffTime = 0;
-        const startTime = storage.getStartTime();
+        const startTime = storage.readStartTime();
         const nowTime = Date.now();
         diffTime = nowTime - startTime;
 
@@ -61,8 +61,8 @@ class Device extends Component {
             const { showDelimiter } = prevState;
             return {
                 showDelimiter: !showDelimiter,
-                current: storage.getCurrent() + diffTime,
-                total: storage.getTotal() + diffTime
+                current: storage.readCurrent() + diffTime,
+                total: storage.readTotal() + diffTime
             };
         });
     };
@@ -73,9 +73,9 @@ class Device extends Component {
             const isRun = mode === MODES.play;
             if (isRun) {
                 clearInterval(intervalId);
-                storage.setMode(MODES.pause);
-                storage.setCurrent(current);
-                storage.setTotal(total);
+                storage.writeMode(MODES.pause);
+                storage.writeCurrent(current);
+                storage.writeTotal(total);
                 return {
                     mode: MODES.pause,
                     intervalId: null,
@@ -83,8 +83,8 @@ class Device extends Component {
                 };
             } else {
                 const intervalId = setInterval(this.tick, 500);
-                storage.setStartTime(Date.now());
-                storage.setMode(MODES.play);
+                storage.writeStartTime(Date.now());
+                storage.writeMode(MODES.play);
                 return {
                     mode: MODES.play,
                     intervalId
@@ -96,9 +96,9 @@ class Device extends Component {
     onReset = () => {
         const { intervalId, total } = this.state;
         clearInterval(intervalId);
-        storage.setTotal(total);
-        storage.setCurrent(0);
-        storage.setMode(MODES.stop);
+        storage.writeTotal(total);
+        storage.writeCurrent(0);
+        storage.writeMode(MODES.stop);
         this.setState({
             current: 0,
             mode: MODES.stop,
