@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './icon.css';
 
 const Icon = ({ type }) => (
-    <div className='icon'>
+    <div className="icon">
         <FontAwesomeIcon icon={type} />
     </div>
 );

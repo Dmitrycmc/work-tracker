@@ -30,7 +30,6 @@ class Device extends Component {
             intervalId = setInterval(this.tick, SECOND / 2);
         }
 
-
         const lastSubtraction = storage.readLastSubtraction();
         const lastMonday = getLastMonday();
 
@@ -41,7 +40,6 @@ class Device extends Component {
             }
         }
         storage.writeLastSubtraction(lastMonday);
-
 
         this.setState({
             mode: storage.readMode(),
@@ -112,17 +110,17 @@ class Device extends Component {
             <div className="device">
                 <Display mode={mode} showDelimiter={showDelimiter} current={current} total={total} />
                 <Pad className="pad-start-pause" onClick={this.onStartPause} keyCode={SPACE_CODE}>
-                    <span className='label'>
+                    <span className="label">
                         <Icon type="play" />
                         START
                     </span>
-                    <span className='label'>
+                    <span className="label">
                         <Icon type="pause" />
                         PAUSE
                     </span>
                 </Pad>
                 <Pad className="pad-reset" onClick={this.onReset}>
-                    <span className='label'>
+                    <span className="label">
                         <Icon type="stop" />
                         RESET
                     </span>

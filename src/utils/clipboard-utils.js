@@ -1,5 +1,5 @@
 const fallbackCopyTextToClipboard = text => {
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement('textarea');
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.focus();
@@ -8,7 +8,7 @@ const fallbackCopyTextToClipboard = text => {
     try {
         const successful = document.execCommand('copy');
         if (!successful) {
-            throw 'failure';
+            throw new Error('failure');
         }
     } catch (err) {
         throw err;

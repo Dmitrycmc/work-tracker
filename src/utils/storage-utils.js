@@ -1,6 +1,6 @@
-import {addMinutesToMs, minutesToMs} from "./time-utils";
-import {MODES} from "../containers/device/device-modes";
-import { defaultTheme } from "../containers/theme-container/themes";
+import { addMinutesToMs, minutesToMs } from './time-utils';
+import { MODES } from '../containers/device/device-modes';
+import { defaultTheme } from '../containers/theme-container/themes';
 
 const MODE_KEY = 'mode';
 const CURRENT_KEY = 'current';

@@ -37,20 +37,20 @@ export const getLastMonday = () => {
     date.setDate(dayOfMonth - dayOfWeek);
     date.setHours(0, 0, 0, 0);
     return date.getTime();
-}
+};
 
 export const getFullWeeksSince = date => {
     const now = Date.now();
     const difference = now - date;
     return Math.floor(difference / WEEK);
-}
+};
 
 /**
  * @param {number | string} ms
  * @param {number | string} minutes
  * @return {number} (ms + minutes) im ms
  */
-export const addMinutesToMs = (ms, minutes) => + ms + minutes * MINUTE;
+export const addMinutesToMs = (ms, minutes) => +ms + minutes * MINUTE;
 
 export const timeToString = (negative, hours, minutes) => {
     const minusStr = negative ? '-' : '';
@@ -60,5 +60,4 @@ export const timeToString = (negative, hours, minutes) => {
     const hoursMinutesStr = hoursStr + minutesStr;
 
     return minusStr + hoursMinutesStr || '0m';
-
-}
+};
