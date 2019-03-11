@@ -3,7 +3,7 @@ import './app.css';
 import Device from '../device/device';
 import Sign from '../../components/sign/sign';
 import {increaseTotal, setTotal} from "../../utils/storage-utils";
-
+import ThemeContainer from '../theme-container/theme-container';
 
 class App extends Component {
 
@@ -19,8 +19,10 @@ class App extends Component {
     render() {
         return (
             <div className="app">
-                <Device/>
-                <Sign/>
+                <ThemeContainer>
+                    <Device/>
+                    <Sign />
+                </ThemeContainer>
             </div>
         );
     }

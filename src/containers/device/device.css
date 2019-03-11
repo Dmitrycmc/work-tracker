@@ -1,5 +1,5 @@
 .device {
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   border: 1px #333 solid;
   background: linear-gradient(140deg, #262626 0%, #333333 50%, #0d0d0d 53%, black 65%);
   user-select: none;

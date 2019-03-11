@@ -1,11 +1,13 @@
 import {addMinutesToMs, minutesToMs} from "./time-utils";
 import {MODES} from "../containers/device/device-modes";
+import { defaultTheme } from "../containers/theme-container/themes";
 
 const MODE_KEY = 'mode';
 const CURRENT_KEY = 'current';
 const TOTAL_KEY = 'total';
 const START_TIME_KEY = 'start-time';
 const LAST_SUBTRACTION_KEY = 'last-subtraction';
+const DISPLAY_THEME_KEY = 'display-theme';
 
 export const readMode = () => +localStorage.getItem(MODE_KEY) || MODES.stop;
 export const writeMode = value => localStorage.setItem(MODE_KEY, value);
@@ -21,6 +23,9 @@ export const writeStartTime = value => localStorage.setItem(START_TIME_KEY, valu
 
 export const readLastSubtraction = () => +localStorage.getItem(LAST_SUBTRACTION_KEY) || 0;
 export const writeLastSubtraction = value => localStorage.setItem(LAST_SUBTRACTION_KEY, value);
+
+export const readDisplayTheme = () => localStorage.getItem(DISPLAY_THEME_KEY) || defaultTheme;
+export const writeDisplayTheme = value => localStorage.setItem(DISPLAY_THEME_KEY, value);
 
 export const increaseTotal = minutes => {
     const total = readTotal();

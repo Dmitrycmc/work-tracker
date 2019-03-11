@@ -1,0 +1,33 @@
+.radio-button-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.outer-radio-button {
+    background: linear-gradient(135deg, #262626dd 0%, #333333dd 47%, #0d0d0ddd 50%, #000d 62%);
+
+    padding: 6px;
+    margin: 2px;
+    height: fit-content;
+    border: 2px solid #555;
+    border-radius: var(--border-radius);
+
+
+    cursor: pointer;
+}
+
+.outer-radio-button.active {
+    border: 2px solid #006dda;
+}
+
+.inner-radio-button {
+    width: 30px;
+    height: 30px;
+
+    border-radius: var(--border-radius);
+}

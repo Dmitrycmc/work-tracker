@@ -1,14 +1,15 @@
 .display-wrapper {
-    background: #ddd;
-    border-radius: 5px;
+    background: var(--display-background);
+    border-radius: var(--border-radius);
     height: auto;
     padding: 7px 12px;
-    color: #111;
+    color: var(--active-color);
     font-family: Digital;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     cursor: default;
+    border: 1px solid #666;
 }
 
 .display-total, .display-current {
@@ -34,7 +35,7 @@
 }
 
 .inactive {
-    color: #bbb;
+    color: var(--inactive-color);
 }
 
 .time:hover {
@@ -60,7 +61,7 @@
 
 .digit::before {
     content: '8';
-    color: #bbb;
+    color: var(--inactive-color);
     position: absolute;
     z-index: -1;
 }
