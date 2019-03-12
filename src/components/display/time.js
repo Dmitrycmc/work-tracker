@@ -1,11 +1,32 @@
 import React, { Component, Fragment } from 'react';
 import { fromMs, MINUTE, timeToString } from '../../utils/time-utils';
 import { copyTextToClipboard } from '../../utils/clipboard-utils';
-import './display.css';
 import TwoDigits from './two-digits';
 import { Delimiter, Minus } from './symbol';
+import styled, { keyframes } from 'styled-components/macro';
 
-const cursorPointer = { cursor: 'pointer' };
+const flash = keyframes`
+    0% {
+            color: var(--active-color);
+    }
+        50% {
+            color: var(--inactive-color);
+    }
+        100% {
+            color: var(--active-color);
+    }
+`;
+
+const TimeWrapper = styled.span`
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    ${props => (props.fontSize ? `font-size: ${props.fontSize}px` : '')};
+
+    &:hover {
+        animation: ${flash} 0.5s infinite ease-in-out;
+    }
+`;
 
 class Time extends Component {
     onClick = () => {
@@ -24,7 +45,7 @@ class Time extends Component {
     };
 
     render() {
-        const { className, delimiter, showSeconds, onlyPositive } = this.props;
+        const { fontSize, delimiter, showSeconds, onlyPositive } = this.props;
 
         const negative = this.isNegative();
         const module = this.getModule();
@@ -32,7 +53,7 @@ class Time extends Component {
         const { hours, minutes, seconds } = fromMs(module);
 
         return (
-            <span style={cursorPointer} className={`time ${className || ''}`} onClick={this.onClick}>
+            <TimeWrapper fontSize={fontSize} onClick={this.onClick}>
                 {!onlyPositive && <Minus show={negative} />}
                 <TwoDigits value={hours} />
                 <Delimiter show={delimiter} />
@@ -43,7 +64,7 @@ class Time extends Component {
                         <TwoDigits value={seconds} />
                     </Fragment>
                 )}
-            </span>
+            </TimeWrapper>
         );
     }
 }

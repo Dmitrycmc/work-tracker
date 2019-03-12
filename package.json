@@ -1,5 +1,10 @@
 {
   "name": "work-tracker",
+  "author": {
+    "name": "Lytov Dmitry",
+    "email": "Dmitrycmc@gmail.com",
+    "url": "https://github.com/Dmitrycmc"
+  },
   "version": "0.1.0",
   "private": true,
   "homepage": "http://Dmitrycmc.github.io/work-tracker",
@@ -9,8 +14,9 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "prettier": "^1.15.2",
-    "react-scripts": "2.1.4"
+    "react-scripts": "^2.1.8",
+    "styled-components": "^4.1.2",
+    "tinycolor2": "^1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +38,7 @@
   ],
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "eslint-plugin-prettier": "^3.0.0"
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.15.2"
   }
 }

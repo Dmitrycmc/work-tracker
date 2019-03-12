@@ -5,7 +5,23 @@ import * as storage from '../../utils/storage-utils';
 import { MODES } from './device-modes';
 import Display from '../../components/display/display';
 import { getFullWeeksSince, getLastMonday, HOUR, SECOND } from '../../utils/time-utils';
-import './device.css';
+import styled from 'styled-components/macro';
+import { backgroundGradient } from '../../components/gradient/gradient';
+
+const Wrapper = styled.div`
+    border-radius: var(--border-radius);
+    border: 1px #333 solid;
+    user-select: none;
+    padding: 15px;
+
+    ${backgroundGradient}
+`;
+
+const Label = styled.span`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 const SPACE_CODE = 32;
 const HOURS_PER_WEEK = 30;
@@ -107,25 +123,25 @@ class Device extends Component {
     render() {
         const { showDelimiter, current, total, mode } = this.state;
         return (
-            <div className="device">
+            <Wrapper gradColor={'#222'}>
                 <Display mode={mode} showDelimiter={showDelimiter} current={current} total={total} />
-                <Pad className="pad-start-pause" onClick={this.onStartPause} keyCode={SPACE_CODE}>
-                    <span className="label">
+                <Pad gradColor="green" onClick={this.onStartPause} keyCode={SPACE_CODE}>
+                    <Label>
                         <Icon type="play" />
                         START
-                    </span>
-                    <span className="label">
+                    </Label>
+                    <Label className="label">
                         <Icon type="pause" />
                         PAUSE
-                    </span>
+                    </Label>
                 </Pad>
-                <Pad className="pad-reset" onClick={this.onReset}>
-                    <span className="label">
+                <Pad gradColor="red" onClick={this.onReset}>
+                    <Label className="label">
                         <Icon type="stop" />
                         RESET
-                    </span>
+                    </Label>
                 </Pad>
-            </div>
+            </Wrapper>
         );
     }
 }

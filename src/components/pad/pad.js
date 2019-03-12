@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import './pad.css';
+import styled from 'styled-components/macro';
+import { buttonGradientMixin } from '../gradient/gradient';
 
-const PadTemplate = ({ onClick, children, className }) => {
-    return (
-        <div className={`pad ${className || ''}`} onClick={onClick}>
-            {children}
-        </div>
-    );
-};
+const PadTemplate = styled.div`
+    padding: 10px;
+    font-size: 23px;
+    color: #bbb;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: var(--border-radius);
+    border: 1px #333 solid;
+    display: flex;
+    flex-direction: column;
+
+    ${buttonGradientMixin}
+`;
 
 class PadWithKey extends Component {
     constructor(props) {
@@ -43,10 +51,12 @@ class PadWithKey extends Component {
     }
 
     render() {
-        const { onClick, children, className } = this.props;
+        const { onClick, children, gradColor } = this.props;
         const { pressed } = this.state;
         return (
-            <PadTemplate onClick={onClick} children={children} className={`${className} ${pressed ? 'pressed' : 0}`} />
+            <PadTemplate gradColor={gradColor} onClick={onClick} pressed={pressed}>
+                {children}
+            </PadTemplate>
         );
     }
 }

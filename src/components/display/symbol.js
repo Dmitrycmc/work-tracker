@@ -1,6 +1,9 @@
 import React from 'react';
+import styled from 'styled-components/macro';
 
-export const Symbol = ({ show, children }) => <span className={show ? '' : 'inactive'}>{children}</span>;
+export const Symbol = styled.span`
+    ${props => !props.show && 'color: var(--inactive-color)'};
+`;
 
 export const Delimiter = ({ show }) => <Symbol show={show}>:</Symbol>;
 

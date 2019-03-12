@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { readDisplayTheme, writeDisplayTheme } from '../../utils/storage-utils';
 import { themes } from './themes';
 import RadioButtons from '../../components/radio-buttons/radio-buttons';
-import './theme-container.css';
+import GlobalVariables from './global-variables';
 
 class ThemeContainer extends Component {
     state = {
@@ -19,7 +19,8 @@ class ThemeContainer extends Component {
         const { displayTheme } = this.state;
         const { children } = this.props;
         return (
-            <div className={displayTheme + '-theme'}>
+            <div>
+                <GlobalVariables theme={displayTheme} />
                 <RadioButtons options={themes} onChange={this.displayThemeChanged} value={displayTheme} />
                 {children}
             </div>

@@ -1,11 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './icon.css';
+import styled from 'styled-components/macro';
+
+const Wrapper = styled.div`
+    margin: 0 5px;
+    font-size: 15px;
+`;
 
 const Icon = ({ type }) => (
-    <div className="icon">
+    <Wrapper>
         <FontAwesomeIcon icon={type} />
-    </div>
+    </Wrapper>
 );
 
 export default Icon;
