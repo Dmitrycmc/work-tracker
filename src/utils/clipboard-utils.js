@@ -23,9 +23,9 @@ export const copyTextToClipboard = (text, onSuccess, onError) => {
     } else {
         try {
             fallbackCopyTextToClipboard(text);
-            onSuccess();
+            onSuccess && onSuccess();
         } catch (e) {
-            onError(e);
+            onError && onError(e);
         }
     }
 };
