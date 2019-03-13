@@ -7,6 +7,7 @@ import Display from '../../components/display/display';
 import { getFullWeeksSince, getLastMonday, HOUR, SECOND } from '../../utils/time-utils';
 import styled from 'styled-components/macro';
 import { backgroundGradient } from '../../components/gradient/gradient';
+import {postData} from "../../utils/api-utils";
 
 const Wrapper = styled.div`
     border-radius: var(--border-radius);
@@ -108,6 +109,17 @@ class Device extends Component {
     };
 
     onReset = () => {
+        postData(
+            'http://youtrack.iceberg.hockey/rest/issue/GC-1471/timetracking/workitem',
+            `<workItem>
+                <date>1551961238389</date>
+                <duration>${this.state.current / 1000 / 60 ^ 0}</duration>
+                <description>none</description>
+                <worktype>
+                    <name>Development</name>
+                </worktype>
+            </workItem>`
+        );
         const { intervalId, total } = this.state;
         clearInterval(intervalId);
         storage.writeTotal(total);
