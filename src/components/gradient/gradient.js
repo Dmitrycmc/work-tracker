@@ -1,22 +1,27 @@
 import { css } from 'styled-components/macro';
-import tinycolor, { darken } from 'tinycolor2';
+import tinycolor from 'tinycolor2';
 
 //todo: fix naming pls
+// todo: ref grad
 
 const angle = 135;
 
-const adjustColor = (color, darkenPercentage) =>
-    tinycolor(color)
-        .darken(darkenPercentage)
-        .toString();
+const adjustColor = (color, darkenPercentage) => {
+    const hsl = tinycolor(color).toHsl();
+
+    return tinycolor({
+        ...hsl,
+        l: 0.3 - darkenPercentage / 100
+    }).toString();
+}
 
 export const backgroundGradient = css`
     background: linear-gradient(
         ${angle}deg,
-        ${props => adjustColor(props.gradColor, 5)} 0%,
+        ${props => adjustColor(props.gradColor, 7)} 0%,
         ${props => adjustColor(props.gradColor, 0)} 50%,
-        ${props => adjustColor(props.gradColor, 15)} 50%,
-        ${props => adjustColor(props.gradColor, 17)} 65%
+        ${props => adjustColor(props.gradColor, 10)} 51%,
+        ${props => adjustColor(props.gradColor, 15)} 65%
     );
 `;
 
