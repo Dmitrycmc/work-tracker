@@ -7,13 +7,13 @@ import Display from '../../components/display/display';
 import { getFullWeeksSince, getLastMonday, HOUR, SECOND } from '../../utils/time-utils';
 import styled from 'styled-components/macro';
 import { backgroundGradient } from '../../components/gradient/gradient';
+import { calcDiffTime, calcCurrent, calcTotal } from '../../utils/storage-utils';
 
 const Wrapper = styled.div`
     border-radius: var(--border-radius);
     border: 1px #333 solid;
     user-select: none;
     padding: 15px;
-
     ${backgroundGradient}
 `;
 
@@ -35,14 +35,16 @@ class Device extends Component {
         };
     }
 
+    //todo: refactor
     componentDidMount() {
         const mode = storage.readMode();
+        const total = storage.readTotal();
+        const current = storage.readCurrent();
+
         let diffTime = 0;
         let intervalId = null;
         if (mode === MODES.play) {
-            const startTime = storage.readStartTime();
-            const nowTime = Date.now();
-            diffTime = nowTime - startTime;
+            diffTime = calcDiffTime();
             intervalId = setInterval(this.tick, SECOND / 2);
         }
 
@@ -52,40 +54,40 @@ class Device extends Component {
         if (lastSubtraction) {
             const weeks = getFullWeeksSince(lastSubtraction);
             if (weeks) {
-                storage.writeTotal(storage.readTotal() - weeks * HOURS_PER_WEEK * HOUR);
+                storage.writeTotal(total - weeks * HOURS_PER_WEEK * HOUR);
             }
         }
         storage.writeLastSubtraction(lastMonday);
 
         this.setState({
-            mode: storage.readMode(),
-            current: storage.readCurrent() + diffTime,
-            total: storage.readTotal() + diffTime,
+            mode,
+            current: current,
+            total: total + diffTime,
             intervalId
         });
     }
 
     tick = () => {
-        let diffTime = 0;
-        const startTime = storage.readStartTime();
-        const nowTime = Date.now();
-        diffTime = nowTime - startTime;
+        const current = calcCurrent();
+        const total = calcTotal();
 
-        this.setState(prevState => {
-            const { showDelimiter } = prevState;
+        this.setState(({ showDelimiter }) => {
             return {
                 showDelimiter: !showDelimiter,
-                current: storage.readCurrent() + diffTime,
-                total: storage.readTotal() + diffTime
+                current,
+                total
             };
         });
     };
 
     onStartPause = () => {
         this.setState(prevState => {
-            const { mode, intervalId, current, total } = prevState;
-            const isRun = mode === MODES.play;
-            if (isRun) {
+            const { mode, intervalId } = prevState;
+
+            if (mode === MODES.play) {
+                const current = calcCurrent();
+                const total = calcTotal();
+
                 clearInterval(intervalId);
                 storage.writeMode(MODES.pause);
                 storage.writeCurrent(current);
@@ -93,10 +95,12 @@ class Device extends Component {
                 return {
                     mode: MODES.pause,
                     intervalId: null,
-                    showDelimiter: true
+                    showDelimiter: true,
+                    current,
+                    total
                 };
             } else {
-                const intervalId = setInterval(this.tick, 500);
+                const intervalId = setInterval(this.tick, SECOND / 2);
                 storage.writeStartTime(Date.now());
                 storage.writeMode(MODES.play);
                 return {
@@ -108,7 +112,9 @@ class Device extends Component {
     };
 
     onReset = () => {
-        const { intervalId, total } = this.state;
+        const { intervalId } = this.state;
+        const total = calcTotal();
+
         clearInterval(intervalId);
         storage.writeTotal(total);
         storage.writeCurrent(0);
@@ -116,7 +122,8 @@ class Device extends Component {
         this.setState({
             current: 0,
             mode: MODES.stop,
-            intervalId: null
+            intervalId: null,
+            showDelimiter: true
         });
     };
 

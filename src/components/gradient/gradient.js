@@ -13,7 +13,7 @@ const adjustColor = (color, darkenPercentage) => {
         ...hsl,
         l: 0.3 - darkenPercentage / 100
     }).toString();
-}
+};
 
 export const backgroundGradient = css`
     background: linear-gradient(

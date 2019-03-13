@@ -47,3 +47,12 @@ export const setTotal = value => {
 
     writeTotal(total);
 };
+
+export const calcDiffTime = () => {
+    const startTime = readStartTime();
+    const nowTime = Date.now();
+    return nowTime - startTime;
+};
+
+export const calcTotal = () => readTotal() + calcDiffTime();
+export const calcCurrent = () => readCurrent() + calcDiffTime();

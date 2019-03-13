@@ -41,7 +41,12 @@ class Time extends Component {
 
     getModule = () => {
         const { value } = this.props;
-        return this.isNegative() ? MINUTE - value : value;
+
+        if (this.isNegative()) {
+            return this.props.showSeconds ? -value : MINUTE - value;
+        } else {
+            return value;
+        }
     };
 
     render() {
