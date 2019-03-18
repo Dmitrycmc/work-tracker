@@ -17,12 +17,13 @@ const flash = keyframes`
     }
 `;
 
-const TimeWrapper = styled.span`
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
+const TimeWrapper = styled.div`
     ${props => (props.fontSize ? `font-size: ${props.fontSize}px` : '')};
+    height: 1em;
 
+    display: flex;
+
+    cursor: pointer;
     &:hover {
         animation: ${flash} 0.5s infinite ease-in-out;
     }

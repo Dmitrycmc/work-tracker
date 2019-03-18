@@ -2,7 +2,7 @@ import { format } from '../../utils/time-utils';
 import React, { Fragment } from 'react';
 import styled from 'styled-components/macro';
 
-const Digit = styled.span`
+const Digit = styled.div`
     position: relative;
     z-index: 1;
 

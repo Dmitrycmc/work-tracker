@@ -5,22 +5,23 @@ import Time from './time';
 import { Symbol } from './symbol';
 import styled from 'styled-components/macro';
 
-const DisplayWrapper = styled.span`
+const DisplayWrapper = styled.div`
     background: var(--display-background);
     border-radius: var(--border-radius);
-    height: auto;
+    height: 65px;
     padding: 7px 12px;
     color: var(--active-color);
     font-family: Digital;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: space-around;
     cursor: default;
     border: 1px solid #666;
 `;
 
-const IndicatorsTotalWrapper = styled.span`
-    font-size: 27px;
+const IndicatorsTotalWrapper = styled.div`
+    font-size: 15px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -28,7 +29,7 @@ const IndicatorsTotalWrapper = styled.span`
     justify-content: space-between;
 `;
 
-const IndicatorsWrapper = styled.span`
+const IndicatorsWrapper = styled.div`
     display: flex;
 `;
 
@@ -47,7 +48,7 @@ const Display = ({ current, total, showDelimiter, mode }) => {
                         <Icon type="stop" />
                     </Symbol>
                 </IndicatorsWrapper>
-                <Time delimiter value={total} />
+                <Time delimiter value={total} fontSize="27" />
             </IndicatorsTotalWrapper>
             <Time delimiter={showDelimiter} onlyPositive showSeconds fontSize="40" value={current} />
         </DisplayWrapper>

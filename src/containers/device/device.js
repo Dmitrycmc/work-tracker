@@ -17,10 +17,11 @@ const Wrapper = styled.div`
     ${backgroundGradient}
 `;
 
-const Label = styled.span`
+const Label = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.8em;
 `;
 
 const SPACE_CODE = 32;

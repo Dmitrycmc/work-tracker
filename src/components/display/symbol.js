@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-export const Symbol = styled.span`
+export const Symbol = styled.div`
     ${props => !props.show && 'color: var(--inactive-color)'};
 `;
 
