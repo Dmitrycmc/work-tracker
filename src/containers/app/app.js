@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        background-image: url(https://pp.userapi.com/c845523/v845523713/cd5dc/01aQ6hG3Tlo.jpg);
+        background-image: var(--background-image);
         background-size: 1024px;
         
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

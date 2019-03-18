@@ -7,10 +7,11 @@ const Wrapper = styled.div`
     align-items: center;
     font-size: 18px;
     margin: 8px;
+    color: var(--sign-color);
 `;
 
 const Link = styled.a`
-    color: #000;
+    color: inherit;
     text-decoration: none;
 
     &:hover {
