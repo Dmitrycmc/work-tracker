@@ -25,7 +25,7 @@ const Label = styled.div`
 `;
 
 const SPACE_CODE = 32;
-const HOURS_PER_WEEK = 30;
+const HOURS_PER_WEEK = 0; /// Changed for May's holidays
 
 class Device extends Component {
     constructor(props) {
